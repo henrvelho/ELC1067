@@ -41,8 +41,12 @@ fclose(f);
 
 }
 
-void le_notas(){
-	
+void le_notas(int *matricula){
+	FILE *f= fopen("alunos.txt", "r");
+if(f == NULL({
+	printf("arquivo não foi aberto! não quero brincar ");
+	return(0);
+}
 	
 }
 

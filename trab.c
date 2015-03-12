@@ -17,10 +17,10 @@ if(f == NULL({
 	return(0);
 }
 while(feof(f) !=0){
-	if (fscanf(f, "%d",&mat ) < 0) 
+	if (fscanf(f, "%d",&mat ) == 0) 
 			break;
 
-c=fgetc(f);
+//c=fgetc(f);
 	while(c==' '){
 		c= fgetc(f);
 	}

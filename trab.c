@@ -41,6 +41,11 @@ fclose(f);
 
 }
 
+void le_notas(){
+	
+	
+}
+
 int main(int argc, char **argv){
 
 char *nome;
@@ -52,9 +57,6 @@ int matricula[50];
 char nomes[50][50];
 int n;
 le_alunos(matriculas,nomes,&n);
-
-
-
 
 
 }

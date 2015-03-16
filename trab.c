@@ -9,7 +9,7 @@ void le_alunos(int *matriculas,char nomes[50][50], int *n){
 	int linha;
 	int mat;
 	linha=0;
-	char c;
+	char c, *retorno;
 	char nome[50];
 	int i=0;
 FILE *f= fopen("alunos.txt", "r");
@@ -38,7 +38,14 @@ linha++;
 
 	}
 *n=linha;
-	printf("%f %s \n", calculaMedia(vetor_nota, notas_tam, item_aluno.matricula), item_aluno.nome);
+	fseek(alunos, 0, SEEK_SET); //vai para o inicio do arquivo
+	while(fgets(linha, 100, alunos)){
+		sscanf(linha ,"%d %[^\n]s", &item_aluno.matricula, &item_aluno.nome); //verifica se o nome é o mesmo passado na funcção
+		retorno = strstr(item_aluno.nome, argv[1]);
+		if(retorno != NULL){ 
+			printf("%f %s \n", calculaMedia(vetor_nota, notas_tam, item_aluno.matricula), item_aluno.nome); // irá printar o nome e a media
+		}
+	}
 fclose(f);
 
 }

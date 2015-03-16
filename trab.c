@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include <string.h>
 
 
 void le_alunos(int *matriculas,char nomes[50][50], int *n){
@@ -32,11 +33,12 @@ c=fgetc(f);
 	}
 nome[i] = '\0';
 matriculas [linha]=mat;
-strcpy(nomes[linha],nome);
+strcpy(nomes[linha],nome); //copia o nome com a linha
 linha++;
 
 	}
 *n=linha;
+	printf("%f %s \n", calculaMedia(vetor_nota, notas_tam, item_aluno.matricula), item_aluno.nome);
 fclose(f);
 
 }
@@ -44,7 +46,7 @@ fclose(f);
 void le_notas(int *matricula){
 	int notas_tam=0;
 	
-	FILE *f= fopen("notas.txt", "r");
+	FILE *f= fopen("notas.txt", "r"); //abre arquivo notas
 if(f == NULL({
 	printf("arquivo não foi aberto! não quero brincar ");
 	return(0);
@@ -84,6 +86,18 @@ linha++;
 fclose(f);
 }
 	
+}
+
+float calculaMedia(struct nota *vetor_nota, int notas_tam, int matricula){
+	int i = 0;
+	float media = 0;
+	for (i = 0; i < notas_tam; ++i)	{
+		if(vetor_nota[i].matricula == matricula){
+			media = vetor_nota[i].nota1 + vetor_nota[i].nota2;
+			media = media/2;
+		}	
+	}
+	return media;
 }
 
 int main(int argc, char **argv){

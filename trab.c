@@ -47,6 +47,27 @@ if(f == NULL({
 	printf("arquivo não foi aberto! não quero brincar ");
 	return(0);
 }
+
+	while(feof(f) !=0){
+		if (fscanf(f, "%d",&not ) < 0)
+	break;
+c=fgetc(f);
+	while(c==' '){
+c= fgetc(f);
+	}
+	while(c=!'\n'){
+nome[i]=c;
+c=fgetc(f);
+i++;
+}
+nome[i] = '\0';
+nota [linha]=not;
+strcpy(nota[linha],nome);
+linha++;
+}
+*n=linha;
+fclose(f);
+}
 	
 }
 

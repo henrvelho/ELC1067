@@ -81,7 +81,8 @@ printf("%s\n",nome);
 int matricula[50];
 char nomes[50][50];
 int n;
-le_alunos(matriculas,nomes,&n);
+le_alunos(matriculas,nomes,&n); \\chama funcao para ler alunos
+le_notas(matriculas);
 
 
 }

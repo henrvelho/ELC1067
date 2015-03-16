@@ -42,6 +42,8 @@ fclose(f);
 }
 
 void le_notas(int *matricula){
+	int notas_tam=0;
+	
 	FILE *f= fopen("notas.txt", "r");
 if(f == NULL({
 	printf("arquivo não foi aberto! não quero brincar ");
@@ -52,9 +54,22 @@ if(f == NULL({
 		if (fscanf(f, "%d",&not ) < 0)
 	break;
 c=fgetc(f);
+// verifica os espaços vazio entre as strings
 	while(c==' '){
 c= fgetc(f);
 	}
+// conta quantos registros tem	
+	while(!feof(notas)){
+		c = fgetc(notas);
+		if( c == '\n')
+			notas_tam++;
+	}
+// verifica se o numero não passa de 50 o permitido
+	if(notas_tam > 50){
+		fprintf(stderr, "Número de registros do arquivo de notas foi excedido! \n");
+		return 0;
+	}
+	
 	while(c=!'\n'){
 nome[i]=c;
 c=fgetc(f);
@@ -81,8 +96,8 @@ printf("%s\n",nome);
 int matricula[50];
 char nomes[50][50];
 int n;
-le_alunos(matriculas,nomes,&n); \\chama funcao para ler alunos
-le_notas(matriculas);
+le_alunos(matriculas,nomes,&n); //chama funcao para ler alunos
+le_notas(matriculas); 
 
 
 }

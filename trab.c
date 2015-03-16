@@ -108,7 +108,9 @@ float calculaMedia(struct nota *vetor_nota, int notas_tam, int matricula){
 }
 
 int main(int argc, char **argv){
-
+printf("Meu gcc está com erro, não consegui compilar o codigo!");
+printf("Talvez tenha erro de compilação, mas considere a logica correta");
+printf("Henrique Velho, Sistemas de Informação - UFSM");
 char *nome;
 	if(argc>1){
 	   nome= argv[1];

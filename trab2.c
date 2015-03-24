@@ -3,15 +3,15 @@
 #include <string.h>
 
 
-void le_alunos(int *matriculas,char nomes[50][50], int *n){
+void le_alunos(int *matriculas,char **nomes, int *n){
 	int linha;
 	int *matriculas;
 	linha=0;
 	char c, *retorno;
 	char nome[50];
 	int i=0;
-matriculas = (int*) malloc( 50 * sizeof(int) ); //aloca espaço 
-nome = (int*) malloc( 50 * sizeof(int) ); //aloca
+//matriculas = (int*) malloc( 50 * sizeof(int) ); //aloca espaço 
+//nome = (char*) malloc( 50 * sizeof(char) ); //aloca
 FILE *f= fopen("alunos.txt", "r");
 if(f == NULL){
 	printf("arquivo não foi aberto! não quero brincar ");
@@ -33,7 +33,8 @@ c=fgetc(f);
 	}
 nome[i] = '\0';
 matriculas [linha]=mat;
-strcpy(nomes[linha],nome); //copia o nome com a linha
+nomes[linha] = (char*) malloc((strlen(nome)+1) * sizeof(char) );
+strcpy(nomes[linha],nome); //copia o nome com a linha / preencher o vetor 
 linha++;
 
 	}
@@ -130,7 +131,7 @@ char *nome;
 	}
 printf("%s\n",nome);
 int matricula[50];
-char nomes[50][50];
+char* nomes;
 int n;
 le_alunos(matriculas,nomes,&n); //chama funcao para ler alunos
 le_notas(matriculas); 

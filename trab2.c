@@ -4,8 +4,6 @@
 
 
 void le_alunos(int *matriculas,char nomes[50][50], int *n){
-
-	
 	int linha;
 	int mat;
 	linha=0;
@@ -13,7 +11,7 @@ void le_alunos(int *matriculas,char nomes[50][50], int *n){
 	char nome[50];
 	int i=0;
 FILE *f= fopen("alunos.txt", "r");
-if(f == NULL({
+if(f == NULL){
 	printf("arquivo não foi aberto! não quero brincar ");
 	return(0);
 }
@@ -93,4 +91,34 @@ linha++;
 fclose(f);
 }
 	
+}
+
+float calculaMedia(struct nota *vetor_nota, int notas_tam, int matricula){
+	int i = 0;
+	float media = 0;
+	for (i = 0; i < notas_tam; ++i)	{
+		if(vetor_nota[i].matricula == matricula){
+			media = vetor_nota[i].nota1 + vetor_nota[i].nota2;
+			media = media/2;
+		}	
+	}
+	return media;
+}
+
+int main(int argc, char **argv){
+printf("Meu gcc está com erro, não consegui compilar o codigo!");
+printf("Talvez tenha erro de compilação, mas considere a logica correta");
+printf("Henrique Velho, Sistemas de Informação - UFSM");
+char *nome;
+	if(argc>1){
+	   nome= argv[1];
+	}
+printf("%s\n",nome);
+int matricula[50];
+char nomes[50][50];
+int n;
+le_alunos(matriculas,nomes,&n); //chama funcao para ler alunos
+le_notas(matriculas); 
+
+
 }

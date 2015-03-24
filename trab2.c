@@ -5,11 +5,13 @@
 
 void le_alunos(int *matriculas,char nomes[50][50], int *n){
 	int linha;
-	int mat;
+	int *matriculas;
 	linha=0;
 	char c, *retorno;
 	char nome[50];
 	int i=0;
+matriculas = (int*) malloc( 50 * sizeof(int) );
+nome = (int*) malloc( 50 * sizeof(int) );
 FILE *f= fopen("alunos.txt", "r");
 if(f == NULL){
 	printf("arquivo não foi aberto! não quero brincar ");
@@ -36,6 +38,9 @@ linha++;
 
 	}
 *n=linha;
+
+
+
 	fseek(alunos, 0, SEEK_SET); //vai para o inicio do arquivo
 	while(fgets(linha, 100, alunos)){
 		sscanf(linha ,"%d %[^\n]s", &item_aluno.matricula, &item_aluno.nome); //verifica se o nome é o mesmo passado na funcção

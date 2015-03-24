@@ -10,8 +10,8 @@ void le_alunos(int *matriculas,char nomes[50][50], int *n){
 	char c, *retorno;
 	char nome[50];
 	int i=0;
-matriculas = (int*) malloc( 50 * sizeof(int) );
-nome = (int*) malloc( 50 * sizeof(int) );
+matriculas = (int*) malloc( 50 * sizeof(int) ); //aloca espaço 
+nome = (int*) malloc( 50 * sizeof(int) ); //aloca
 FILE *f= fopen("alunos.txt", "r");
 if(f == NULL){
 	printf("arquivo não foi aberto! não quero brincar ");

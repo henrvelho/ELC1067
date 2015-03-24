@@ -38,8 +38,18 @@ linha++;
 
 	}
 *n=linha;
+//faz a verificação se precisa de mais alocação
+//com matricula e nome
 
-
+	if(matricula >=50){
+		matriculas = (int*) realloc( matriculas, 100 * sizeof(int) );
+	}
+	
+	if(nome >=50){
+		nome = (int*) realloc( nome, 100 * sizeof(int) );	
+	}
+//aloca mais espaço se for necessário
+//continua com a verificação no arquivo
 
 	fseek(alunos, 0, SEEK_SET); //vai para o inicio do arquivo
 	while(fgets(linha, 100, alunos)){

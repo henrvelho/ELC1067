@@ -10,7 +10,7 @@ void le_alunos(int *matriculas,char **nomes, int *n){
 	char c, *retorno;
 	char nome[50];
 	int i=0;
-//matriculas = (int*) malloc( 50 * sizeof(int) ); //aloca espaço 
+
 //nome = (char*) malloc( 50 * sizeof(char) ); //aloca
 FILE *f= fopen("alunos.txt", "r");
 if(f == NULL){
@@ -42,12 +42,10 @@ linha++;
 //faz a verificação se precisa de mais alocação
 //com matricula e nome
 
-	if(matricula >=50){
-		matriculas = (int*) realloc( matriculas, 100 * sizeof(int) );
-	}
+	
 	
 	if(nome >=50){
-		nome = (int*) realloc( nome, 100 * sizeof(int) );	
+		nome = (char*) realloc( nome, 100 * sizeof(char) );	
 	}
 //aloca mais espaço se for necessário
 //continua com a verificação no arquivo
@@ -61,6 +59,9 @@ linha++;
 		}
 	}
 fclose(f);
+
+free(matriculas);
+free(nome);
 
 }
 
@@ -133,7 +134,7 @@ printf("%s\n",nome);
 int matricula[50];
 char* nomes;
 int n;
-le_alunos(matriculas,nomes,&n); //chama funcao para ler alunos
+le_alunos(matriculas,&nomes,&n); //chama funcao para ler alunos
 le_notas(matriculas); 
 
 

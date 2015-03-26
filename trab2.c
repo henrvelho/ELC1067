@@ -60,8 +60,7 @@ linha++;
 	}
 fclose(f);
 
-//free(matriculas);
-free(nome);
+
 
 }
 
@@ -137,5 +136,6 @@ int n;
 le_alunos(matriculas,&nomes,&n); //chama funcao para ler alunos
 le_notas(matriculas); 
 free(matriculas);
+free(nome);
 
 }

@@ -67,13 +67,13 @@ void vetor_destroi(vetor_t* vet)
 
 int vetor_numelem(vetor_t *vet)
 {
-	/* TODO aqui */
+	
 	return vet->n;
 }
 
 void vetor_insere_carta(vetor_t *vet, int indice, carta c)
 {
-	/* TODO aqui */
+	
 	vet->n++;
 }
 

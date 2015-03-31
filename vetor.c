@@ -49,8 +49,6 @@ vetor_t* vetor_cria(void)
 	for(i= 0; i < ncartas; i++){
 		c = carta_cria( (rand()%13)+1, (rand()%4) );
 		vetor_insere_carta( baralho, i, c );
-		printf("carta insere %d valor '%s' naipe '%s' (baralho com %d cartas)\n",
-		i, carta_valor_str(c), carta_naipe_str(c), vetor_numelem(baralho));
 	}
 	return vet;
 }
@@ -61,7 +59,7 @@ void vetor_destroi(vetor_t* vet)
 	c = vetor_remove_carta( baralho, 0 );
 	free(baralho);
 	if(c == NULL){
-	printf("ERRO ao remover carta (pos=%d)\n", i);
+	printf("ERRO ao destruir carta (pos=%d)\n", i);
 	exit(-1);
 }
 	memo_libera(vet);	

@@ -57,7 +57,13 @@ vetor_t* vetor_cria(void)
 
 void vetor_destroi(vetor_t* vet)
 {
-	/* TODO aqui */
+	for(i= 0; i < ncartas; i++){
+	c = vetor_remove_carta( baralho, 0 );
+	free(baralho);
+	if(c == NULL){
+	printf("ERRO ao remover carta (pos=%d)\n", i);
+	exit(-1);
+}
 	memo_libera(vet);	
 }
 
@@ -75,7 +81,9 @@ void vetor_insere_carta(vetor_t *vet, int indice, carta c)
 
 carta vetor_remove_carta(vetor_t *vet, int indice)
 {
-	/* TODO aqui */
+	for(i= 0; i < ncartas; i++){
+	c = vetor_remove_carta( baralho, 0 );
+	free(baralho);
 	vet->n--;
 	return NULL;
 }
@@ -88,6 +96,7 @@ carta vetor_acessa_carta(vetor_t *vet, int indice)
 
 bool vetor_valido(vetor_t *vet)
 {
-	/* TODO aqui */
+	if(vet != 0){
 	return false;
+	}
 }

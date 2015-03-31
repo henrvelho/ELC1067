@@ -46,7 +46,12 @@ vetor_t* vetor_cria(void)
 {
 	struct vetor *vet = (struct vetor*)memo_aloca(sizeof(struct vetor));
 	vet->n = 0;
-	/* TODO aqui */
+	for(i= 0; i < ncartas; i++){
+		c = carta_cria( (rand()%13)+1, (rand()%4) );
+		vetor_insere_carta( baralho, i, c );
+		printf("carta insere %d valor '%s' naipe '%s' (baralho com %d cartas)\n",
+		i, carta_valor_str(c), carta_naipe_str(c), vetor_numelem(baralho));
+	}
 	return vet;
 }
 

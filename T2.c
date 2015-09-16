@@ -1,24 +1,63 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+    //
+    char** alocarMatriz(int Linhas,int Colunas);
+    void inicializaMatriz(char **matriz, int Linhas, int Colunas);
+    void imprimeMatriz(char **matriz, int Linhas, int Colunas);
+    void pesquisaMatriz(char **matriz);
 
-int main()
-{
-    int i, j, k, n, p, t; //Contadores
+    int main(){
+        char **matriz = alocarMatriz(12,12);
+        inicializaMatriz(matriz, 12, 12);
+        imprimeMatriz(matriz, 12, 12);
+        pesquisaMatriz(matriz);
+        system("pause");
 
-    int encontrada; // SIM = 1. NÃO = 0.
+    }
 
-    char matriz[25][25], palavra[25][25];
 
-    printf("BEM-VINDO AO JOGO DE CACA-PALAVRAS\nDIGITE O TAMANHO DA MATRIZ NXN: ");
-    scanf("%d", &n);
+    char** alocarMatriz(int Linhas,int Colunas){
+        int i;
+        char **matriz = (char**)malloc(Linhas * sizeof(char*));
+        for (i = 0; i < Linhas; i++){
+           matriz[i] = (char*) malloc(Colunas * sizeof(char));
+        }
+    return matriz;
+    }
 
-    printf("DIGITE AS LETRAS DA MATRIZ:\n");
+    void inicializaMatriz(char **matriz, int Linhas, int Colunas){
+         int i, j;
+         int minChar = 65, maxChar = 90;
+         int caractere;
+         srand(time(NULL));
+         for (i=0; i< Linhas; i++){
+             for(j=0; j<Colunas; j++){
+                caractere = rand() % (minChar - maxChar + 1) + minChar;
+                matriz[i][j] = caractere;
+             }
+         }
+    }
 
-    for (i = 0; i < n; i++)
-        scanf("%s", matriz[i]); //Armazena as letras na matriz.
+    void imprimeMatriz(char **matriz, int Linhas, int Colunas){
+         int i, j;
+         for (i=0; i< Linhas; i++){
+             printf("\n");
+             for(j=0; j<Colunas; j++){
+                printf(" %c ", matriz[i][j]);
+             }
+         }
+         printf("\n");
+    }
 
-    printf("DIGITE O NUMERO DE PALAVRAS DESEJADO: ");
+    void pesquisaMatriz(char **matriz){
+        int i=0, j=0, n=0, p=0, t=0; //Contadores
+        int k=0;
+        char palavra[20][20];
+        int encontrada;
+
+        printf("DIGITE O NUMERO DE PALAVRAS DESEJADO: ");
     scanf("%d", &p);
 
     printf("DIGITE AS PALAVRAS:\n");
@@ -66,6 +105,7 @@ int main()
                     if (palavra[k][1] == matriz[i][j + 1]) //Se a segunda letra for encontrada a direita (Leste)
                     {
                         encontrada = 1;
+
 
                         for (t = 0; t < strlen(palavra[k]); t++)
                             if (palavra[k][t] != matriz[i][j + t])
@@ -140,7 +180,7 @@ int main()
             if (encontrada)
                 break;
         }
-
+//printf("valor de %i", encontrada);
         //Depois da verificação ele diz se a palavra foi encontrada ou não, então passa para a verificação da próxima palavra.
         if (encontrada)
             printf("%s - PALAVRA ENCONTRADA\n", palavra[k]);
